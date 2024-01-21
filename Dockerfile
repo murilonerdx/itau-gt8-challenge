@@ -14,7 +14,7 @@ COPY settings.gradle .
 COPY src src
 
 # Configurar permissões e construir o projeto (excluindo os testes)
-RUN chmod +x ./gradlew && ./gradlew build -x test
+RUN chmod +x ./gradlew && ./gradlew build
 
 # Stage final: criar a imagem mínima do OpenJDK 17 e copiar o arquivo JAR construído
 FROM openjdk:17-slim
