@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'jacoco'
     id 'org.springframework.boot' version '3.1.8'
     id 'io.spring.dependency-management' version '1.1.4'
     id 'org.asciidoctor.jvm.convert' version '3.3.2'
@@ -7,6 +8,29 @@ plugins {
 
 group = 'br.com.itau'
 version = '0.0.1-SNAPSHOT'
+
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true  // Use 'required' ao invés de 'enabled'
+        html.required = true // Para HTML report
+    }
+}
+
+test {
+    jacoco {
+        excludes = [
+                'sun/security/mscapi/**',
+                'sun/security/smartcardio/**',
+                'org/jcp/xml/dsig/internal/dom/**',
+                'jdk.crypto.mscapi/**'
+        ]
+    }
+}
 
 java {
     sourceCompatibility = '17'
