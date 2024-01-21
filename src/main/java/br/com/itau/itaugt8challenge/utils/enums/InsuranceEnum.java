@@ -8,9 +8,9 @@ public enum InsuranceEnum {
     private Integer percentage;
     private String type;
 
-    InsuranceEnum(Integer percentaget, String type) {
+    InsuranceEnum(Integer percentage, String type) {
         this.type = type;
-        this.percentage = percentaget;
+        this.percentage = percentage;
     }
 
     public Integer getPercentage() {
