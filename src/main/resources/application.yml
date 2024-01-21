@@ -5,7 +5,7 @@ spring:
   application:
     name: itau-challenge
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${POSTGRES_DB:insurance-challenge}
+    url: jdbc:postgresql://localhost:${DB_PORT:5432}/${DB_NAME:insurance-challenge}
     username: ${DB_USERNAME:postgres}
     password: ${DB_PASSWORD:12345}
   jpa:
