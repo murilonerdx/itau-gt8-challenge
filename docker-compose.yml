@@ -12,6 +12,9 @@ services:
       - 'DB_PASSWORD=12345'
     depends_on:
       - db
+    networks:
+      - my-network  # Nome da rede personalizada
+
   db:
     image: postgres:latest
     environment:
@@ -22,6 +25,11 @@ services:
       - "5432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
+    networks:
+      - my-network
 
 volumes:
   db-data:
+
+networks:
+  my-network:
