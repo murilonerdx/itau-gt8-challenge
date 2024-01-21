@@ -9,12 +9,13 @@ import org.hibernate.validator.constraints.br.CPF;
 public record CustomerRequestDTO(
         @NotNull(message = "Nome não pode ser nulo")
         String name,
+        @NotNull(message = "Por favor digite um CPF")
         @CPF(message = "CPF inválido")
         String cpf,
         @Min(value = 18, message = "A idade precisa ser maior ou igual a 18")
         @NotNull(message = "Idade não pode ser nula")
         Integer age,
-        @NotBlank(message = "UF não pode ser nulo")
+        @NotBlank(message = "UF não pode ser nulo ou vazio")
         String location,
         @NotNull
         @JsonProperty(value = "valor_veiculo")
