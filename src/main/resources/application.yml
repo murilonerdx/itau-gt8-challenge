@@ -5,9 +5,9 @@ spring:
   application:
     name: itau-challenge
   datasource:
-    url: jdbc:postgresql://localhost:${DB_PORT:5432}/${DB_NAME:insurance-challenge}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:12345}
+    url: jdbc:postgresql://localhost/insurance-challenge
+    username: postgres
+    password: 12345
   jpa:
     hibernate:
       ddl-auto: none
