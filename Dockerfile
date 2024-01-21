@@ -1,11 +1,20 @@
-# Use a imagem oficial do OpenJDK 17 como base
-FROM openjdk:17-jdk
+FROM openjdk:17 as build
 
-# Defina o diretório de trabalho
 WORKDIR /app
 
-# Copie o arquivo JAR do seu aplicativo Spring Boot para o contêiner
-COPY build/libs/itau-gt8-challenge-0.0.1-SNAPSHOT.jar itau-challenge.jar
+COPY gradlew .
+COPY gradle gradle
+COPY build.gradle .
+COPY settings.gradle .
+COPY src src
 
-# Comando de entrada para iniciar o aplicativo Spring Boot
-CMD ["java", "-jar", "itau-challenge.jar"]
+RUN chmod +x ./gradlew
+
+RUN ./gradlew build -x test
+
+ENV SPRING_PROFILES_ACTIVE=prd
+
+FROM openjdk:17-slim
+COPY --from=build /build/libs/itau-gt8-challenge-0.0.1-SNAPSHOT itau-challenge.jar
+
+ENTRYPOINT ["java","-jar","/itau-challenge.jar"]
