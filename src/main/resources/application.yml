@@ -8,6 +8,8 @@ spring:
     url: jdbc:postgresql://db:5432/insurance
     username: postgres
     password: 12345
+    initialization-mode: always
+    continue-on-error: true
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,6 +17,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: update
+          continue-on-error: true
 
 logging:
   file:

@@ -10,8 +10,7 @@ services:
       POSTGRES_PASSWORD: 12345
     ports:
       - "5432:5432"
-    networks:
-      - app-network
+
   app:
     build: .
     ports:
@@ -22,10 +21,6 @@ services:
       SPRING_DATASOURCE_PASSWORD: 12345
     depends_on:
       - db
-    networks:
-      - app-network
+
 volumes:
   db-data:
-
-networks:
-  app-network:
