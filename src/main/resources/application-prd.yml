@@ -4,14 +4,13 @@ spring:
   application:
     name: itau-challenge
   datasource:
-    url: jdbc:postgresql://localhost:5432/insurance-challenge
-    username: postgres
-    password: ${DB_PASS}
-    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL_PRD:jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME_PRD}
+    password: ${DB_PASSWORD_PRD}
   jpa:
     hibernate:
-      ddl-auto: create
-    show-sql: true
+      ddl-auto: none
+    show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
