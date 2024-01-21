@@ -1,23 +1,29 @@
-# Stage 1: Build the Java application
-FROM openjdk:17 as build
+# Use a imagem do OpenJDK 17 como base
+FROM openjdk:17 as builder
 
+# Configurar o diretório de trabalho
 WORKDIR /app
 
+# Copiar o Gradle Wrapper e os arquivos relacionados com o build
 COPY gradlew .
 COPY gradle gradle
 COPY build.gradle .
 COPY settings.gradle .
+
+# Copiar o código-fonte
 COPY src src
 
-RUN chmod +x ./gradlew
+# Configurar permissões e construir o projeto (excluindo os testes)
+RUN chmod +x ./gradlew && ./gradlew build -x test
 
-# Use the "install" task to build the application and dependencies (excluding tests)
-RUN ./gradlew install -x test
-
-# Stage 2: Create the final image
+# Stage final: criar a imagem mínima do OpenJDK 17 e copiar o arquivo JAR construído
 FROM openjdk:17-slim
 
-# Copy the built JAR file from the previous stage
-COPY --from=build /app/build/libs/itau-gt8-challenge-0.0.1-SNAPSHOT.jar /itau-challenge.jar
+# Copiar o arquivo JAR construído a partir do estágio anterior
+COPY --from=builder /app/build/libs/itau-gt8-challenge-0.0.1-SNAPSHOT.jar /app/itau-challenge.jar
 
-ENTRYPOINT ["java","-jar","/itau-challenge.jar"]
+# Definir a variável de ambiente para o perfil Spring Boot (se necessário)
+# ENV SPRING_PROFILES_ACTIVE=prd
+
+# Comando de entrada para iniciar o aplicativo Spring Boot
+ENTRYPOINT ["java", "-jar", "/app/itau-challenge.jar"]
