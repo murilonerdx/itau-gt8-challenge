@@ -5,11 +5,9 @@ spring:
   application:
     name: itau-challenge
   datasource:
-    url: jdbc:postgresql://db:5432/insurance
-    username: postgres
-    password: 12345
-    initialization-mode: always
-    continue-on-error: true
+    url: jdbc:postgresql://postgres:5432/dockerdb
+    username: dockeruser
+    password: dockerpassword
   jpa:
     hibernate:
       ddl-auto: update
