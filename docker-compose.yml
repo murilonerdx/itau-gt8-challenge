@@ -1,34 +1,20 @@
 version: '3'
 services:
-  itau-challenge-app:
-    build: ./  # Garante que o Docker construa a imagem do seu aplicativo Spring Boot a partir do diretório atual
-    container_name: itau-challenge-app
-    ports:
-      - "8080:8080"  # Mapeia a porta 8080 do contêiner para a porta 8080 do host
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/insurance  # URL corrigida para apontar para o serviço PostgreSQL no Docker Compose
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 12345
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_JPA_SHOW_SQL: 'false'
-      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
-      SPRING_APPLICATION_NAME: itau-challenge
-      SERVER_PORT: 8080
-      LOGGING_FILE_NAME: ./logs/log-file.log
+  app:
+    build:
+      context: .
+    container_name: app
     depends_on:
-      - postgres  # Garante que o PostgreSQL esteja em execução antes do aplicativo
-
-  postgres:
-    image: postgres:latest
-    container_name: postgres
-    ports:
-      - "5432:5432"
+      - db
     environment:
-      POSTGRES_DB: insurance
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 12345
-    volumes:
-      - pgdata:/var/lib/postgresql/data  # Persiste os dados do PostgreSQL
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/insurance
+      - SPRING_DATASOURCE_USERNAME=insurance
+      - SPRING_DATASOURCE_PASSWORD=insurance
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
-volumes:
-  pgdata:  # Define um volume para o PostgreSQL
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_USER=insurance
+      - POSTGRES_PASSWORD=insurance
