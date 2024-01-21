@@ -1,20 +1,31 @@
-version: '3'
+version: '3.8'
 services:
+  db:
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: insurance
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
   app:
-    build:
-      context: .
-    container_name: app
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/insurance
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 12345
     depends_on:
       - db
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/insurance
-      - SPRING_DATASOURCE_USERNAME=insurance
-      - SPRING_DATASOURCE_PASSWORD=insurance
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    networks:
+      - app-network
+volumes:
+  db-data:
 
-  db:
-    image: 'postgres:13.1-alpine'
-    container_name: db
-    environment:
-      - POSTGRES_USER=insurance
-      - POSTGRES_PASSWORD=insurance
+networks:
+  app-network:
