@@ -5,7 +5,7 @@ spring:
   application:
     name: itau-challenge
   datasource:
-    url: jdbc:postgresql://localhost/insurance-challenge
+    url: jdbc:postgresql://localhost/insurance
     username: postgres
     password: 12345
   jpa:
