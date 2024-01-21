@@ -10,8 +10,6 @@ COPY src src
 
 RUN chmod +x ./gradlew
 
-RUN ./gradlew build -x test
-
 ENV SPRING_PROFILES_ACTIVE=prd
 
 FROM openjdk:17-slim
