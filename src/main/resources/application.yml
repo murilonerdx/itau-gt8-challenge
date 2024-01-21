@@ -5,7 +5,7 @@ spring:
   application:
     name: itau-challenge
   datasource:
-    url: jdbc:postgresql://postgres:5432/dockerdb
+    url: jdbc:postgresql://localhost:5432/dockerdb
     username: dockeruser
     password: dockerpassword
   jpa:
