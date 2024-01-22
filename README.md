@@ -134,9 +134,14 @@ Escolhi essa arquitetura pois ela é padronizada e util simples sem uma complexi
 Para projetos maiores seria interessante aplicar arquitetura hexagonal, que ajude a longo prazo, as manutenções, ajudando também no clean code e separando as prioridades em portas de entrada e saida.
 
 ## Como Usar
+
 git clone https://github.com/murilonerdx/itau-gt8-challenge.git
+
+
 cd itau-gt8-challenge
+
 docker compose up --build -d
+
 (Acesse: http://localhost:8080/swagger-ui/index.html)
 
 OU
