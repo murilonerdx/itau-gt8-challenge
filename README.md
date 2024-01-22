@@ -140,6 +140,7 @@ docker compose up --build -d
 (Acesse: http://localhost:8080/swagger-ui/index.html)
 
 OU
+
 docker network create my-network
 
 
