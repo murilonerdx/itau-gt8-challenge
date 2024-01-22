@@ -147,6 +147,9 @@ docker images
 docker run murilonerdx/itau-gt8-challenge:v1.0
 (Acesse: http://localhost:8080/swagger-ui/index.html)
 
+OU
+docker run --network my-network -e SPRING_DATASOURCE_URL=jdbc:postgresql://nome_do_container_postgres:5432/dockerdb -e SPRING_DATASOURCE_USERNAME=dockeruser -e SPRING_DATASOURCE_PASSWORD=dockerpassword -p 8080:8080 murilonerdx/itau-gt8-challenge:latest
+
 Para acessar as soluções e passo a passo: [SOLUÇÃO](https://github.com/murilonerdx/itau-gt8-challenge/blob/feature/initial/SOLUTION.md)
 
 ---
