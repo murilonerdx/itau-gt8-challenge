@@ -1,6 +1,6 @@
-# Nome do Projeto
+# ITAU GT8 CHALLENGE
 
-Descrição curta do projeto.
+Projeto proposto para uma vaga no Itau
 
 ## Índice
 
@@ -61,7 +61,7 @@ O que está sendo salvo no banco é os dados do usuario, e há partir disso cons
 
 ## Link do Docker Hub
 
-[Link para a imagem Docker](https://hub.docker.com/r/usuario/projeto)
+[Link para a imagem Docker](https://hub.docker.com/repository/docker/murilonerdx/itau-gt8-challenge)
 
 ## Implementação do Swagger
 
@@ -134,9 +134,20 @@ Escolhi essa arquitetura pois ela é padronizada e util simples sem uma complexi
 Para projetos maiores seria interessante aplicar arquitetura hexagonal, que ajude a longo prazo, as manutenções, ajudando também no clean code e separando as prioridades em portas de entrada e saida.
 
 ## Como Usar
+git clone https://github.com/murilonerdx/itau-gt8-challenge.git
+cd itau-gt8-challenge
+docker compose up --build -d
+(Acesse: http://localhost:8080/swagger-ui/index.html)
 
+OU
+docker run --name some-postgres -e POSTGRES_DB=dockerdb -e POSTGRES_USER=dockeruser -e POSTGRES_PASSWORD=dockerpassword -p 5432:5432 -d postgres
 
+docker pull murilonerdx/itau-gt8-challenge:v1.0
+docker images
+docker run murilonerdx/itau-gt8-challenge:v1.0
+(Acesse: http://localhost:8080/swagger-ui/index.html)
 
+Para acessar as soluções e passo a passo: [SOLUÇÃO](https://github.com/murilonerdx/itau-gt8-challenge/blob/feature/initial/SOLUTION.md) - [2024]
 
 ---
 

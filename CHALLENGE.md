@@ -77,12 +77,12 @@ Abaixo deixamos os pontos que daremos maior atenção:
 - Cobertura de testes (Code Coverage) *[OK]*
 - Arquitetura utilizada *[OK]*
 - Abstração, acoplamento, extensibilidade e coesão *[OK]* 
-- Utilização de Design Patterns (quando necessário) *[OK strategy]*
+- Utilização de Design Patterns (quando necessário) *[OK]*
 - Legibilidade de Código *[OK]*
 - Documentação da Solução no README.md *[OK]*
 - Observabilidade (logs) *[OK]*
 - Geração do relatório de cobertura de testes *[OK]*
-- Dockerfile configurado para deploy da aplicação
+- Dockerfile configurado para deploy da aplicação [OK]
 
 ## <a name="pontos_que_nao_iremos_avaliar">3. Pontos que não iremos avaliar</a>
 Abaixo deixamos alguns pontos que não iremos avaliar
