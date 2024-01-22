@@ -147,7 +147,7 @@ docker images
 docker run murilonerdx/itau-gt8-challenge:v1.0
 (Acesse: http://localhost:8080/swagger-ui/index.html)
 
-Para acessar as soluções e passo a passo: [SOLUÇÃO](https://github.com/murilonerdx/itau-gt8-challenge/blob/feature/initial/SOLUTION.md) - [2024]
+Para acessar as soluções e passo a passo: [SOLUÇÃO](https://github.com/murilonerdx/itau-gt8-challenge/blob/feature/initial/SOLUTION.md)
 
 ---
 
