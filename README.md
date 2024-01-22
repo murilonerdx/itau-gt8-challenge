@@ -140,15 +140,12 @@ docker compose up --build -d
 (Acesse: http://localhost:8080/swagger-ui/index.html)
 
 OU
-docker run --name some-postgres -e POSTGRES_DB=dockerdb -e POSTGRES_USER=dockeruser -e POSTGRES_PASSWORD=dockerpassword -p 5432:5432 -d postgres
-
+docker network create my-network
+docker run --name postgres --network my-network -e POSTGRES_USER=dockeruser -e POSTGRES_PASSWORD=dockerpassword -e POSTGRES_DB=dockerdb -p 5432:5432 -d postgres:13-alpine
 docker pull murilonerdx/itau-gt8-challenge:v1.0
-docker images
-docker run murilonerdx/itau-gt8-challenge:v1.0
-(Acesse: http://localhost:8080/swagger-ui/index.html)
+docker run --name app --network my-network -p 8080:8080 -e SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/dockerdb -e SPRING_DATASOURCE_USERNAME=dockeruser -e SPRING_DATASOURCE_PASSWORD=dockerpassword murilonerdx/itau-gt8-challenge:latest
 
-OU
-docker run --network my-network -e SPRING_DATASOURCE_URL=jdbc:postgresql://nome_do_container_postgres:5432/dockerdb -e SPRING_DATASOURCE_USERNAME=dockeruser -e SPRING_DATASOURCE_PASSWORD=dockerpassword -p 8080:8080 murilonerdx/itau-gt8-challenge:latest
+(Acesse: http://localhost:8080/swagger-ui/index.html)
 
 Para acessar as soluções e passo a passo: [SOLUÇÃO](https://github.com/murilonerdx/itau-gt8-challenge/blob/feature/initial/SOLUTION.md)
 
