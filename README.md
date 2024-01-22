@@ -141,8 +141,13 @@ docker compose up --build -d
 
 OU
 docker network create my-network
+
+
 docker run --name postgres --network my-network -e POSTGRES_USER=dockeruser -e POSTGRES_PASSWORD=dockerpassword -e POSTGRES_DB=dockerdb -p 5432:5432 -d postgres:13-alpine
+
+
 docker pull murilonerdx/itau-gt8-challenge:v1.0
+
 docker run --name app --network my-network -p 8080:8080 -e SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/dockerdb -e SPRING_DATASOURCE_USERNAME=dockeruser -e SPRING_DATASOURCE_PASSWORD=dockerpassword murilonerdx/itau-gt8-challenge:latest
 
 (Acesse: http://localhost:8080/swagger-ui/index.html)
